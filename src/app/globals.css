@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #060b1a;
+  --foreground: #f8fafc;
+  --accent-primary: 235 87% 66%;
+  --accent-secondary: 192 95% 50%;
+  --accent-tertiary: 266 88% 70%;
+  --grid-color: rgba(80, 181, 255, 0.08);
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(76, 110, 245, 0.12), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(34, 211, 238, 0.18), transparent 45%),
+    linear-gradient(135deg, #05060d 0%, #061125 55%, #090314 100%);
+  color: var(--foreground);
+  font-family: var(--font-display), var(--font-body), system-ui, -apple-system, sans-serif;
+}
+
+.gradient-orb {
+  position: absolute;
+  inset: auto;
+  width: 360px;
+  height: 360px;
+  background: conic-gradient(
+    from 45deg,
+    rgba(76, 110, 245, 0.9),
+    rgba(34, 211, 238, 0.7),
+    rgba(159, 77, 255, 0.85),
+    rgba(76, 110, 245, 0.9)
+  );
+  filter: blur(64px);
+  opacity: 0.35;
+  animation: orbFloat 16s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.glow-ring {
+  background: radial-gradient(circle, rgba(148, 163, 255, 0.38) 0%, rgba(148, 163, 255, 0) 65%);
+  border-radius: 9999px;
+  animation: pulseRing 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.glass-surface {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.5));
+  border: 1px solid rgba(148, 163, 255, 0.16);
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.38) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(148, 163, 255, 0.08) 25%, rgba(148, 163, 255, 0.18) 50%, rgba(148, 163, 255, 0.08) 75%);
+  background-size: 200% 100%;
+  animation: shimmerMove 2s linear infinite;
+}
+
+.hover-card {
+  transition: transform 0.45s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.hover-card:hover,
+.hover-card:focus-visible {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(94, 234, 212, 0.55);
+  box-shadow:
+    0 20px 45px rgba(34, 211, 238, 0.18),
+    0 12px 26px rgba(129, 140, 248, 0.18);
+}
+
+.timeline-step {
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.timeline-step::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 0.9rem;
+  top: 0.4rem;
+  border-radius: 9999px;
+  border: 2px solid rgba(94, 234, 212, 0.9);
+  background: rgba(14, 116, 144, 0.85);
+  box-shadow: 0 0 22px rgba(45, 212, 191, 0.65);
+}
+
+.timeline-step::after {
+  content: "";
+  position: absolute;
+  left: 1.3rem;
+  top: 1.6rem;
+  bottom: -2.5rem;
+  width: 1px;
+  background: linear-gradient(rgba(148, 163, 255, 0.35), rgba(34, 211, 238, 0.1));
+}
+
+.timeline-step:last-child::after {
+  display: none;
+}
+
+.floating-icon {
+  pointer-events: none;
+  animation: floatPulse 18s ease-in-out infinite;
+}
+
+.floating-icon svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 25px 45px rgba(15, 118, 209, 0.24));
+}
+
+.reduced-motion * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate3d(10px, -30px, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(-30px, 40px, 0) rotate(12deg) scale(1.08);
+  }
+}
+
+@keyframes pulseRing {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes shimmerMove {
+  0% {
+    background-position: -120% 0;
+  }
+  100% {
+    background-position: 120% 0;
+  }
+}
+
+@keyframes floatPulse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-icon,
+  .gradient-orb,
+  .glow-ring,
+  .hover-card,
+  .shimmer {
+    animation: none !important;
+  }
+  body {
+    scroll-behavior: auto;
+  }
+  .timeline-step::after {
+    background: rgba(148, 163, 255, 0.35);
+  }
+}

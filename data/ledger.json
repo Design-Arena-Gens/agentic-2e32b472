@@ -1,0 +1,21 @@
+{
+  "certificates": [
+    {
+      "id": "CERT-2024-ALPHA",
+      "ownerName": "Avery Chen",
+      "courseName": "Web3 Smart Contract Architecture",
+      "issuer": "NovaChain Institute",
+      "issueDate": "2024-09-18T00:00:00.000Z",
+      "contentHash": "c4a1f080e472c5f62e5a69d01b3d135a4674cd9f3750d9a2e4bdbd1f056c1fa9",
+      "blockchain": {
+        "network": "Simulated NovaNet",
+        "transactionHash": "0xabc123ff45",
+        "blockNumber": 1280456
+      },
+      "metadata": {
+        "description": "Completion of advanced smart contract architecture track.",
+        "mediaUrl": "https://images.unsplash.com/photo-1618005198919-d3d4b5a92eee"
+      }
+    }
+  ]
+}
